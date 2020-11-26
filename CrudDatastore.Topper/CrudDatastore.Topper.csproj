@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{34A8BDB1-797C-4A97-8EAE-67FF59B32BA6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CrudDatastore.Topper</RootNamespace>
+    <AssemblyName>CrudDatastore.Topper</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="CrudDatastore">
+      <HintPath>..\packages\CrudDatastore.1.1.3\lib\net45\CrudDatastore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ContextInfo.cs" />
+    <Compile Include="DataContextBase.cs" />
+    <Compile Include="DataStore.cs" />
+    <Compile Include="EntityBase.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="IContextInfo.cs" />
+    <Compile Include="ICreatedEntity.cs" />
+    <Compile Include="IDeletedEntity.cs" />
+    <Compile Include="ILastModifiedEntity.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="UnitOfWorkBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CrudDatastore.Topper.EntityFramework.nuspec" />
+    <None Include="CrudDatastore.Topper.nuspec" />
+    <None Include="content\DataContext.cs.pp" />
+    <None Include="content\Identification.cs.pp" />
+    <None Include="content\Person.cs.pp" />
+    <None Include="content\PersonSpecs.cs.pp" />
+    <None Include="content\UnitOfWorkInMemory.cs.pp" />
+    <None Include="content\UnitOfWorkEf.cs.pp" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

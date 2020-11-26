@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudDatastore.Topper", "CrudDatastore.Topper\CrudDatastore.Topper.csproj", "{34A8BDB1-797C-4A97-8EAE-67FF59B32BA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F9546C12-70F4-4E5F-BDE0-B05E5FA64992}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudDatastore.Topper.Test", "CrudDatastore.Topper.Test\CrudDatastore.Topper.Test.csproj", "{3BA87E85-02EF-40A9-9370-85771BA56903}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34A8BDB1-797C-4A97-8EAE-67FF59B32BA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A8BDB1-797C-4A97-8EAE-67FF59B32BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A8BDB1-797C-4A97-8EAE-67FF59B32BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A8BDB1-797C-4A97-8EAE-67FF59B32BA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA87E85-02EF-40A9-9370-85771BA56903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA87E85-02EF-40A9-9370-85771BA56903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA87E85-02EF-40A9-9370-85771BA56903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA87E85-02EF-40A9-9370-85771BA56903}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
