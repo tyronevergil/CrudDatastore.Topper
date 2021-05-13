@@ -186,8 +186,14 @@ namespace $rootnamespace$
 
             static DataContextExpressionTreeModifier()
             {
-                _entityTypes = AppDomain.CurrentDomain.GetAssemblies()
-                    .SelectMany(a => a.GetTypes())
+
+            //_entityTypes = AppDomain.CurrentDomain.GetAssemblies()
+            //    .SelectMany(a => a.GetTypes())
+            //    .Where(t => t.IsSubclassOf(typeof(Topper.EntityBase)) && !t.IsAbstract)
+            //    .ToList();
+
+                _entityTypes = typeof(UnitOfWorkEf).Assembly
+                    .GetTypes()
                     .Where(t => t.IsSubclassOf(typeof(Topper.EntityBase)) && !t.IsAbstract)
                     .ToList();
 
@@ -272,9 +278,16 @@ namespace $rootnamespace$
                             if (leftPropertyComparison != null)
                             {
                                 var filter = filters.First().Predicate as DbComparisonExpression;
-                                if (((DbPropertyExpression)filter.Left).Property == leftPropertyComparison.Property)
+                                if (filter != null)
                                 {
-                                    return true;
+                                    var propExpr = filter.Left as DbPropertyExpression;
+                                    if (propExpr != null)
+                                    {
+                                        if (propExpr.Property == leftPropertyComparison.Property)
+                                        {
+                                            return true;
+                                        }
+                                    }
                                 }
                             }
 
@@ -282,9 +295,16 @@ namespace $rootnamespace$
                             if (rightPropertyComparison != null)
                             {
                                 var filter = filters.First().Predicate as DbComparisonExpression;
-                                if (((DbPropertyExpression)filter.Right).Property == rightPropertyComparison.Property)
+                                if (filter != null)
                                 {
-                                    return true;
+                                    var propExpr = filter.Right as DbPropertyExpression;
+                                    if (propExpr != null)
+                                    {
+                                        if (propExpr.Property == rightPropertyComparison.Property)
+                                        {
+                                            return true;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -400,6 +420,7 @@ namespace $rootnamespace$
                     _expressionMap[expression] = DbExpression.FromSingle((float?)node.Value);
                 else if (type == typeof(string))
                     _expressionMap[expression] = DbExpression.FromString((string)node.Value);
+
                 /* else - more work todo here! */
 
                 return expression;
