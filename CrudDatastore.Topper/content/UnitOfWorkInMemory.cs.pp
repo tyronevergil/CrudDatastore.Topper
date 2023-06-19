@@ -27,8 +27,8 @@ namespace $rootnamespace$
                 new Entities.Identification { IdentificationId = 4, PersonId = 2, Type = Entities.Identification.Types.SSN, Number = "323–442-336" },
             };
 
-            var dataStorePerson = new DataStore<Entities.Person>(new InMemoryCrudAdapter<Entities.Person>(people, p => p.PersonId));
-            var dataStoreIdentification = new DataStore<Entities.Identification>(new InMemoryCrudAdapter<Entities.Identification>(identifications, p => p.IdentificationId));                
+            var dataStorePerson = new DataStore<Entities.Person>(new InMemoryCrudAdapter<Entities.Person>(this, people, p => p.PersonId));
+            var dataStoreIdentification = new DataStore<Entities.Identification>(new InMemoryCrudAdapter<Entities.Identification>(this, identifications, p => p.IdentificationId));                
 
             this.Register(dataStorePerson)
                 .Map(p => p.Identifications, (p, i) => p.PersonId == i.PersonId);
@@ -41,17 +41,19 @@ namespace $rootnamespace$
         private static IEnumerable<string> _fieldList;
         private static IEnumerable<string> _fieldListWithoutKey;
 
-        public InMemoryCrudAdapter(IList<T> source, Expression<Func<T, object>> key)
-            : this(source, key, true)
+        public InMemoryCrudAdapter(IDataNavigation navigation, IList<T> source, Expression<Func<T, object>> key)
+            : this(navigation, source, key, true)
         { }
 
-        public InMemoryCrudAdapter(IList<T> source, Expression<Func<T, object>> key, bool isIdentity)
-            : this(source, GetPropertyName(key), true)
+        public InMemoryCrudAdapter(IDataNavigation navigation, IList<T> source, Expression<Func<T, object>> key, bool isIdentity)
+            : this(navigation, source, GetPropertyName(key), true)
         { }
 
-        private InMemoryCrudAdapter(IList<T> source, string key, bool isIdentity)
+        private InMemoryCrudAdapter(IDataNavigation navigation, IList<T> source, string key, bool isIdentity)
             : base
             (
+                navigation,
+
                 /* create */
                 (e) =>
                 {

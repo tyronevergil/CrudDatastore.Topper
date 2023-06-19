@@ -27,7 +27,7 @@ namespace CrudDatastore.Topper.Test
             };
 
             var dataStorePerson = new DataStore<Entities.Person>(
-                new DelegateCrudAdapter<Entities.Person>(
+                new DelegateCrudAdapter<Entities.Person>(this,
                     /* create */
                     (e) =>
                     {
